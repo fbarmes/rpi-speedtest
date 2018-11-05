@@ -11,13 +11,14 @@ DOCKER_IMAGE_VERSION=$(shell cat VERSION)
 #-------------------------------------------------------------------------------
 #-- Absolute path to this Makefile
 SCRIPT_DIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+NODE_EXPORTER_URL=https://github.com/prometheus/node_exporter/releases/download/v0.17.0-rc.0/node_exporter-0.17.0-rc.0.linux-armv7.tar.gz
 
 
 #-------------------------------------------------------------------------------
 # Default target (all)
 #-------------------------------------------------------------------------------
 .PHONY: all
-all: echo docker
+all: echo deps docker
 
 #-------------------------------------------------------------------------------
 # clean target
@@ -34,6 +35,15 @@ echo:
 	@echo "DOCKER_IMAGE_VERSION=${DOCKER_IMAGE_VERSION}"
 	@echo "SCRIPT_DIR=${SCRIPT_DIR}"
 
+#-------------------------------------------------------------------------------
+# Gather dependencies
+#-------------------------------------------------------------------------------
+deps: bin/deps.done
+
+bin/deps.done:
+	mkdir -p ${SCRIPT_DIR}/bin
+	wget ${NODE_EXPORTER_URL} --output-document ${SCRIPT_DIR}/bin/node_exporter.tgz
+	touch bin/deps.done
 
 #-------------------------------------------------------------------------------
 # Build docker image
