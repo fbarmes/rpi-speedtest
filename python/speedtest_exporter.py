@@ -31,9 +31,9 @@ upload[0] = upload[0].replace(',', '.')
 print '# HELP speedtest_ping ping time in ms'
 print '# TYPE speedtest_ping gauge'
 print 'speedtest_ping {}'.format(ping[0]);
-print '# HELP speedtest_download download speed in MB/s'
+print '# HELP speedtest_download download speed in Mb/s'
 print '# TYPE speedtest_download gauge'
 print 'speedtest_download {}'.format(download[0]);
 print '# TYPE speedtest_upload gauge'
-print '# HELP speedtest_upload upload speed in MB/s'
+print '# HELP speedtest_upload upload speed in Mb/s'
 print 'speedtest_upload {}'.format(upload[0]);
