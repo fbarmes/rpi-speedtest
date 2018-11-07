@@ -28,7 +28,7 @@ make
 ## Running this image
 
 ```
-docker run fbarmes/rpi-speedtest -p 9100:9100
+docker run -d --name rpi-speedtest --hostname rpi-speedtest -p 9100:9100 fbarmes/rpi-speedtest:1.0.0-SNAPSHOT
 ```
 
 ## Viewing the data
