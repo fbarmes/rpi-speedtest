@@ -17,4 +17,4 @@ echo "run first speedtest"
 #--
 # start node exporter
 echo "start node exporter"
-/opt/node_exporter/node_exporter --collector.textfile.directory /opt/textfile_collector/
+/opt/node_exporter/node_exporter --collector.textfile.directory /opt/speedtest_data/prom

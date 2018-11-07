@@ -13,15 +13,16 @@ ARG NODE_EXPORTER_ARCHIVE="node_exporter.tgz"
 #-------------------------------------------------------------------------------
 RUN \
   # update system
-  apk update && apk upgrade           &&\
+  apk update && apk upgrade             &&\
   #
   # create structure
-  mkdir -p /opt/textfile_collector/      &&\
-  mkdir -p /opt/python                   &&\
+  mkdir -p /opt/speedtest_data/         &&\
+  mkdir -p /opt/speedtest_data/prom     &&\
+  mkdir -p /opt/python                  &&\
   #
   # install speedtest
-  apk add python py-pip               &&\
-  pip install --upgrade pip           &&\
+  apk add python py-pip                 &&\
+  pip install --upgrade pip             &&\
   pip install speedtest-cli
 
 
@@ -44,6 +45,7 @@ COPY python/run-speedtest.sh /opt/python
 # wrap up
 #-------------------------------------------------------------------------------
 EXPOSE 9100
+VOLUME /opt/speedtest_data
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
 
