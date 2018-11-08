@@ -1,3 +1,5 @@
+fbarmes/rpi-speedtest        1.0.0-SNAPSHOT      e4041cb77f2b        4 minutes ago       79.3MB
+
 # Speedtest using the raspberry PI
 
 Monitor network bandwidth from raspberry PI and expose the metric on HTTP using
@@ -28,7 +30,7 @@ make
 ## Running this image
 
 ```
-docker run -d --name rpi-speedtest --hostname rpi-speedtest -p 9100:9100 fbarmes/rpi-speedtest:1.0.0-SNAPSHOT
+docker run -d --name rpi-speedtest --hostname rpi-speedtest -p 9100:9100 fbarmes/rpi-speedtest
 ```
 
 ## Viewing the data
