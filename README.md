@@ -1,5 +1,3 @@
-fbarmes/rpi-speedtest        1.0.0-SNAPSHOT      e4041cb77f2b        4 minutes ago       79.3MB
-
 # Speedtest using the raspberry PI
 
 Monitor network bandwidth from raspberry PI and expose the metric on HTTP using
