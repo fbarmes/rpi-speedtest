@@ -11,8 +11,8 @@ DOCKER_IMAGE_VERSION=$(shell cat VERSION)
 #-------------------------------------------------------------------------------
 #-- Absolute path to this Makefile
 SCRIPT_DIR=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-NODE_EXPORTER_URL=https://github.com/prometheus/node_exporter/releases/download/v0.17.0-rc.0/node_exporter-0.17.0-rc.0.linux-armv7.tar.gz
-
+NODE_EXPORTER_VERSION="0.17.0-rc.0"
+NODE_EXPORTER_URL="https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz"
 
 #-------------------------------------------------------------------------------
 # Default target (all)

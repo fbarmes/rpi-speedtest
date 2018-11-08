@@ -14,9 +14,9 @@ import time
 def run_speedtest():
 
     #-- collect data
-    response = subprocess.Popen('speedtest-cli --simple', shell=True, stdout=subprocess.PIPE).stdout.read()
     timestamp = int(round(time.time() * 1000))
     datetime=time.strftime('%Y-%m-%d %H:%M:%S')
+    response = subprocess.Popen('speedtest-cli --simple', shell=True, stdout=subprocess.PIPE).stdout.read()
 
     ping = re.findall('Ping:\s(.*?)\s', response, re.MULTILINE)
     download = re.findall('Download:\s(.*?)\s', response, re.MULTILINE)

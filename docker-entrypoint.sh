@@ -2,19 +2,10 @@
 set -e
 
 #--
-# install cron jb
-ln -s /opt/python/run-speedtest.sh /etc/periodic/hourly
-
-#--
 # start cron in background
-crond -b
-
-#--
-# run first speedtest
-echo "run first speedtest"
-/opt/python/run-speedtest.sh
+# this will also launch speedtest upon boot via cron
+crond -b -l 1
 
 #--
 # start node exporter
-echo "start node exporter"
 /opt/node_exporter/node_exporter --collector.textfile.directory /opt/speedtest_data/prom
