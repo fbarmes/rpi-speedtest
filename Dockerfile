@@ -18,7 +18,8 @@ RUN \
   # install speedtest
   apk add python py-pip                 &&\
   pip install --upgrade pip             &&\
-  pip install speedtest-cli
+  pip install speedtest-cli             &&\
+  pip install pytz tzlocal
 
 #-------------------------------------------------------------------------------
 # install node exporter

@@ -6,7 +6,8 @@ import re
 import subprocess
 import sys
 import time
-
+import datetime
+import tzlocal
 
 #-------------------------------------------------------------------------------
 """ Run speedtest and extract the metrics
@@ -14,8 +15,9 @@ import time
 def run_speedtest():
 
     #-- collect data
-    timestamp = int(round(time.time() * 1000))
-    datetime=time.strftime('%Y-%m-%d %H:%M:%S')
+    local_tz = tzlocal.get_localzone()
+    now_lima=datetime.datetime.now(tz=local_tz)
+
     response = subprocess.Popen('speedtest-cli --simple', shell=True, stdout=subprocess.PIPE).stdout.read()
 
     ping = re.findall('Ping:\s(.*?)\s', response, re.MULTILINE)
@@ -29,8 +31,7 @@ def run_speedtest():
     upload[0] = upload[0].replace(',', '.')
 
     return {
-        'timestamp':timestamp,
-        'datetime':datetime,
+        'datetime':now_lima.isoformat(),
         'ping':ping[0],
         'download':download[0],
         'upload':upload[0]
@@ -154,7 +155,7 @@ def main():
 
     #-- run speedtest
     speedtest_data = run_speedtest()
-    # speedtest_data= {'download': '12.68', 'timestamp': 1541508305845L, 'ping': '25.326', 'upload': '59.17', 'datetime': '2018-11-06 12:45:05'}
+    # speedtest_data= {'download': '12.68', 'ping': '25.326', 'upload': '59.17', 'datetime': '2018-11-06 12:45:05'}
     # print(speedtest_data)
 
     #-- output prometheus
